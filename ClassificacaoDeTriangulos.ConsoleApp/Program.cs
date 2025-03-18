@@ -28,7 +28,9 @@
                 if(TrianguloValido(ladoX, ladoY, ladoZ))
                 {
                     Console.WriteLine("Valores Válidos");
-                    //string tipoTriangulo = QualTriangulo(ladoX, ladoY, ladoZ);
+                    Console.WriteLine("-----------------------------------");
+                    QualTriangulo(ladoX, ladoY, ladoZ);
+                    Console.WriteLine("-----------------------------------");
                 }
                 else
                 {
@@ -53,5 +55,15 @@
             else
             return false;
         }
+        static void QualTriangulo(decimal ladoX, decimal ladoY, decimal ladoZ)
+        {
+            if (ladoX == ladoY && ladoY == ladoZ)
+                Console.WriteLine("Seu Triângulo é Equilátero");
+            else if (ladoZ != ladoX && ladoX != ladoY && ladoZ != ladoY )
+                Console.WriteLine("Seu Triângulo é Escaleno");
+            else
+                Console.WriteLine("Seu Triângulo é Isósceles");
+        }
     }
+
 }
