@@ -24,18 +24,34 @@
                 Console.WriteLine($"Lado Y = {ladoY} ");
                 Console.WriteLine($"Lado Z = {ladoZ} ");
 
+                // verificar se o Triângulo Existe
+                if(TrianguloValido(ladoX, ladoY, ladoZ))
+                {
+                    Console.WriteLine("Valores Válidos");
+                    //string tipoTriangulo = QualTriangulo(ladoX, ladoY, ladoZ);
+                }
+                else
+                {
+                    Console.WriteLine("Valores Inválidos");
+                }
 
 
 
-
-
-                Console.WriteLine("Deseja COntinuar? (s/n)");
+                    Console.WriteLine("Deseja COntinuar? (s/n)");
                 string continuar = Console.ReadLine()!.ToUpper();
 
                 if (continuar != "S")
                     break;
             }
             
+        }
+        static bool TrianguloValido(decimal ladoX, decimal ladoY, decimal ladoZ)
+        {
+            if (ladoX + ladoY >= ladoZ && ladoZ + ladoY >= ladoX && ladoX + ladoZ >= ladoY)
+            return true;
+            
+            else
+            return false;
         }
     }
 }
