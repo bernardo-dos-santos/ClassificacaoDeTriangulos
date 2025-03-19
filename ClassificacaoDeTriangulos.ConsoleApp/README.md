@@ -1,3 +1,4 @@
+![](https://i.imgur.com/XsQR0H9.gif)
 # Classificação de Triângulos
 
 Um programa muito útil para verificação se tal Triângulo é possível e qual seu respectivo tipo
