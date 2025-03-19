@@ -8,7 +8,7 @@ namespace ClassificacaoDeTriangulos.ConsoleApp
         static void Main(string[] args)
         {
             bool continuar1 = true;
-            while (true)
+            while (continuar1)
             {
                 Cabecalho();
 
@@ -28,9 +28,11 @@ namespace ClassificacaoDeTriangulos.ConsoleApp
 
         static void Cabecalho()
         {
-                Console.WriteLine("-----------------------------------");
-                Console.WriteLine("Classificação de Triângulos");
-                Console.WriteLine("-----------------------------------");
+            Console.Clear();
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("Classificação de Triângulos");
+            Console.WriteLine("-----------------------------------");
+            Console.ReadLine();
         }
         
         
@@ -62,7 +64,10 @@ namespace ClassificacaoDeTriangulos.ConsoleApp
                 continuar1 = false;
             }
             else
+            {
                 continuar1 = true;
+            }
+                
 
             return continuar1;
         }
