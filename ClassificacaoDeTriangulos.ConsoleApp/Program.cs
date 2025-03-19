@@ -7,24 +7,21 @@ namespace ClassificacaoDeTriangulos.ConsoleApp
     {
         static void Main(string[] args)
         {
+            bool continuar1 = true;
             while (true)
             {
                 Cabecalho();
 
-                decimal ladoX = LerDado("X");
-                decimal ladoY = LerDado("Y");
-                decimal ladoZ = LerDado("Z");
+                decimal ladoX =  ClassificacaoTriangulos.LerDado("X");
+                decimal ladoY =  ClassificacaoTriangulos.LerDado("Y");
+                decimal ladoZ =  ClassificacaoTriangulos.LerDado("Z");
 
                 ExibirValores(ladoX, ladoY, ladoZ);
 
-                TrianguloValido(ladoX, ladoY, ladoZ);
-               
-                
-                Console.WriteLine("Deseja COntinuar? (s/n)");
-                string continuar = Console.ReadLine()!.ToUpper();
+                ClassificacaoTriangulos.TrianguloValido(ladoX, ladoY, ladoZ);
 
-                if (continuar != "S")
-                    break;
+                continuar1 = DesejaContinuar(continuar1);
+                
             }
             
         }
@@ -35,46 +32,8 @@ namespace ClassificacaoDeTriangulos.ConsoleApp
                 Console.WriteLine("Classificação de Triângulos");
                 Console.WriteLine("-----------------------------------");
         }
-        static bool TrianguloValido(decimal ladoX, decimal ladoY, decimal ladoZ)
-        {
-            if (ladoX + ladoY >= ladoZ && ladoZ + ladoY >= ladoX && ladoX + ladoZ >= ladoY)
-            {
-                Console.WriteLine("Valores Válidos");
-                Console.WriteLine("-----------------------------------");
-                QualTriangulo(ladoX, ladoY, ladoZ);
-                Console.WriteLine("-----------------------------------");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Esse Triângulo é Inválido ");
-                return false;
-            }
-            
-        }
-        public static void QualTriangulo(decimal ladoX, decimal ladoY, decimal ladoZ)
-        {
-            if (ladoX == ladoY && ladoY == ladoZ)
-                Console.WriteLine("Seu Triângulo é Equilátero");
-            else if (ladoZ != ladoX && ladoX != ladoY && ladoZ != ladoY )
-                Console.WriteLine("Seu Triângulo é Escaleno");
-            else
-                Console.WriteLine("Seu Triângulo é Isósceles");
-        }
-        static decimal LerDado (string qualado)
-        {
-            decimal valor;
-            while(true)
-            {
-                Console.WriteLine($"Informe o valor do lado {qualado}");
-                bool ehNumero = decimal.TryParse(Console.ReadLine(), out valor);
-                if (ehNumero)
-                    break;
-                else
-                    Console.WriteLine("Números Inválidos, Digite Novamente");
-            }
-            return valor;
-        }       
+        
+        
         static void ExibirValores(decimal ladoX, decimal ladoY, decimal ladoZ)
         {
             Console.WriteLine("-----------------------------------");
@@ -83,6 +42,29 @@ namespace ClassificacaoDeTriangulos.ConsoleApp
             Console.WriteLine($"Lado Y = {ladoY} ");
             Console.WriteLine($"Lado Z = {ladoZ} ");
             Console.ReadLine();
+        }
+
+
+        static bool DesejaContinuar(bool continuar1)
+        {
+            Console.WriteLine("Deseja Continuar? (s/n)");
+            string continuar = Console.ReadLine()!.ToUpper();
+
+            if (continuar != "S" && continuar != "N")
+            {
+                Console.WriteLine("Comando Inválido, Digite Novamente");
+                DesejaContinuar(continuar1);
+            }
+            else if (continuar != "S")
+            {
+                Console.WriteLine("Obrigado pela Presença!!");
+                Console.ReadLine();
+                continuar1 = false;
+            }
+            else
+                continuar1 = true;
+
+            return continuar1;
         }
     }
 
